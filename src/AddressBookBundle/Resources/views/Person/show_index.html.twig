@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Show People{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Welcome to the Show People page</h1>
+    <p><strong>Number of people: {{ persons | length }}</strong></p>
+        <table class="table">
+            <tr>
+                <th> Name </th>
+                <th> Surname </th>
+                <th> Description </th>  
+                <th> Action </th>
+            </tr>
+            {% for person in persons %}
+            <tr>
+                <td><a href="{{ path("addressbook_person_showperson", 
+                        {"id":person.id}) }}">
+                    {{ person.name }}
+                </a></td>
+                <td><a href="{{ path("addressbook_person_showperson", 
+                        {"id":person.id}) }}">
+                    {{ person.surname }}
+                </a></td>
+                <td>{{ person.description }}</td>
+                <td>
+                    <a href="{{ path("addressbook_person_showperson", 
+                        {"id":person.id}) }}">
+                        <button class="btn btn-primary"> 
+                            Show 
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

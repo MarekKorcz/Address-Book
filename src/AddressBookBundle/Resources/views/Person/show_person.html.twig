@@ -1,0 +1,76 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Show Person{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>Welcome to the Show Person page</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>About</h3>
+            <table class="table">
+                <tr>
+                    <th> Name: </th>
+                    <td> {{ person.name }} </td>
+                </tr>
+                <tr>
+                    <th> Surname: </th>
+                    <td> {{ person.surname }} </td>
+                </tr>
+                <tr>
+                    <th> Description: </th>
+                    <td> {{ person.description }} </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        
+        
+        <div class="col-md-4">
+            <h3>Phones</h3>
+            {% if person.phones | length > 0 %}
+                <table class="table">
+                <tr>
+                    <th> Phones: </th>
+                </tr>
+                {% for phone in person.phones %}
+                    <tr>
+                        <td> {{ phone.number }} </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% else %} 
+                <p>There is no phones</p>
+            {% endif %}
+        </div>
+        
+        
+        <div class="col-md-4">
+            <h3>Addresses</h3>
+            {% if person.addresses | length > 0 %}
+                <table class="table">
+                <tr>
+                    <th> City: </th>
+                    <th> Street </th>
+                </tr>
+                {% for address in person.addresses %}
+                    <tr>
+                        <td>
+                            {{ address.city }}
+                        </td>
+                        <td> 
+                            {{ address.street }},
+                            {{ address.houseNo }}, {{ address.flatNo }}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% else %} 
+                <p>There is no addresses</p>
+            {% endif %}
+        </div>
+        
+        
+    </div>
+{% endblock %}
