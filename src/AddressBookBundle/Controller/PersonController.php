@@ -4,11 +4,46 @@ namespace AddressBookBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
 
-use AddressBookBundle\Entity\Address;
+use AddressBookBundle\Entity\Person;
+use AddressBookBundle\Form\PersonType;
 
 class PersonController extends Controller {
 
+    
+    /**
+     * @Route("/new")
+     * @Method({"GET", "POST"})
+     */
+    public function createNewPerson(Request $req){
+        
+        $person = new Person();
+        
+        $form = $this->createForm(new PersonType(), $person);
+        
+        $form->handleRequest($req);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            
+            $person = $form->getData();
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($person);
+            $em->flush();
+            
+            return $this->redirectToRoute(
+                'addressbook_person_showindex'
+            );
+        }
+        
+        return $this->render(
+            'AddressBookBundle:Person:new_person.html.twig',
+            ['form' => $form->createView()]
+        );
+    }
+    
     /**
      * @Route("/")
      */
@@ -71,6 +106,8 @@ class PersonController extends Controller {
     /**
      * @Route("/add")
      */
+    
+    /*
     public function addAction(){
         
         $repo = $this->getDoctrine()->getRepository("AddressBookBundle:Person");
@@ -92,4 +129,5 @@ class PersonController extends Controller {
 
         return $this->redirectToRoute("addressbook_person_showindex");
     }
+    */
 }
