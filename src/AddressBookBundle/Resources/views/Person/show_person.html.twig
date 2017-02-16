@@ -1,17 +1,23 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Show Person{% endblock %}
+{% block title %}Edit Person{% endblock %}
 
 {% block body %}
     <div class="container">
-    <h1>Welcome to the Show Person page</h1>
+    <h1>Welcome To Edit Name Page</h1>
     <div class="row">
         <div class="col-md-12">
             <h3>About</h3>
             <table class="table">
                 <tr>
                     <th> Name: </th>
-                    <td> {{ person.name }} </td>
+                    <td> 
+                        {{ person.name }} &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{ path("addressbook_person_editname", 
+                            {"id":person.id}) }}">
+                            Edit
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <th> Surname: </th>

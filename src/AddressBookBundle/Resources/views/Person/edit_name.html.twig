@@ -1,0 +1,32 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Edit Name{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>About</h3>
+            <table class="table">
+                <tr>
+                    <th> Name: </th>
+                    <td> {{ person.name }} </td>
+                    <td>
+                        <a href="{{ path() }}">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <th> Surname: </th>
+                    <td> {{ person.surname }} </td>
+                </tr>
+                <tr>
+                    <th> Description: </th>
+                    <td> {{ person.description }} </td>
+                </tr>
+            </table>
+        </div>
+    </div>   
+    </div>
+{% endblock %}
