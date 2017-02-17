@@ -27,13 +27,6 @@ class Phone
      * @ORM\Column(name="number", type="string", length=32)
      */
     private $number;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="type", type="smallint")
-     */
-    private $type;
     
      /**
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="phones")
@@ -73,29 +66,6 @@ class Phone
     public function getNumber()
     {
         return $this->number;
-    }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Phone
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer 
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**

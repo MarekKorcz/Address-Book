@@ -14,10 +14,10 @@ class PersonController extends Controller {
 
     
     /**
-     * @Route("/new")
+     * @Route("/newPerson")
      * @Method({"GET", "POST"})
      */
-    public function createNewPerson(Request $req){
+    public function createNewPersonAction(Request $req){
         
         $person = new Person();
         

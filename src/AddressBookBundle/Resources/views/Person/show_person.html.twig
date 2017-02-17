@@ -12,38 +12,50 @@
                 <tr>
                     <th> Name: </th>
                     <td> 
-                        {{ person.name }} &nbsp;
+                        <strong>{{ person.name }}</stron>
+                    <td>
                         <a href="{{ path("addressbook_person_editname", 
                             {"id":person.id}) }}">
-                            Edit
+                            <button class="btn btn-sm btn-primary">
+                                <strong>Edit</strong>
+                            </button>
                         </a>
+                    </td>
                     </td>
                 </tr>
                 <tr>
                     <th> Surname: </th>
                     <td> 
-                        {{ person.surname }} &nbsp;
+                        <strong>{{ person.surname }}</strong>
+                    </td>
+                    <td>
                         <a href="{{ path("addressbook_person_editname", 
                             {"id":person.id}) }}">
-                            Edit
+                            <button class="btn btn-sm btn-primary">
+                                <strong>Edit</strong>
+                            </button>
                         </a>
                     </td>
                 </tr>
                 <tr>
                     <th> Description: </th>
                     <td> 
-                        {{ person.description }} &nbsp;
+                        <strong>{{ person.description }}</strong>
+                    </td>
+                    <td>
                         <a href="{{ path("addressbook_person_editname", 
                             {"id":person.id}) }}">
-                            Edit
+                            <button class="btn btn-sm btn-primary">
+                                <strong>Edit</strong>
+                            </button>
                         </a>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
+    
     <div class="row">
-        
         
         <div class="col-md-4">
             <h3>Phones</h3>
@@ -61,9 +73,12 @@
             {% else %} 
                 <p>There is no phones</p>
             {% endif %}
-            
+            <a href="{{ path('addressbook_phone_createnewphone') }}"
+                <button class="btn btn-sm btn-success">
+                    <strong>Add new</strong>
+                </button>
+            </a>
         </div>
-        
         
         <div class="col-md-4">
             <h3>Addresses</h3>
@@ -89,7 +104,6 @@
                 <p>There is no addresses</p>
             {% endif %}
         </div>
-        
-        
+
     </div>
 {% endblock %}
