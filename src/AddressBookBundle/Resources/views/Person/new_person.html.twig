@@ -4,8 +4,25 @@
 
 {% block body %}
     <div class="container">
+        <div>
         {{ form_start(form) }}
-            {{ form_widget(form) }}
+            <div class="form">
+                {{ form_label(form.name) }}<br>
+                {{ form(form.name) }}
+            </div>
+            <div class="form">
+                {{ form_label(form.surname) }}
+                {{ form(form.surname) }}
+            </div>
+            <div class="form">
+                {{ form_label(form.description) }}
+                {{ form(form.description) }}
+            </div>
+            <div class="form">
+                {{ form_label(form.save) }}
+                {{ form(form.save, {'method':'POST', 'action': 'default'}) }}
+            </div>
         {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}
