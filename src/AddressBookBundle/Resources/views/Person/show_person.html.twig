@@ -12,7 +12,7 @@
                 <tr>
                     <th> Name: </th>
                     <td> 
-                        {{ person.name }} &nbsp;&nbsp;&nbsp;&nbsp;
+                        {{ person.name }} &nbsp;
                         <a href="{{ path("addressbook_person_editname", 
                             {"id":person.id}) }}">
                             Edit
@@ -21,11 +21,23 @@
                 </tr>
                 <tr>
                     <th> Surname: </th>
-                    <td> {{ person.surname }} </td>
+                    <td> 
+                        {{ person.surname }} &nbsp;
+                        <a href="{{ path("addressbook_person_editname", 
+                            {"id":person.id}) }}">
+                            Edit
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <th> Description: </th>
-                    <td> {{ person.description }} </td>
+                    <td> 
+                        {{ person.description }} &nbsp;
+                        <a href="{{ path("addressbook_person_editname", 
+                            {"id":person.id}) }}">
+                            Edit
+                        </a>
+                    </td>
                 </tr>
             </table>
         </div>
@@ -49,6 +61,7 @@
             {% else %} 
                 <p>There is no phones</p>
             {% endif %}
+            
         </div>
         
         

@@ -83,20 +83,36 @@ class PersonController extends Controller {
     /**
      * @Route("/{id}/editName", requirements={"id":"\d+"})
      */
-    public function editNameAction($id){
+    public function editNameAction(Request $req, $id){
         
         $repo = $this->getDoctrine()->getRepository("AddressBookBundle:Person");
-        
         $person = $repo->find($id);
         
         if($person == null){
             
             throw $this->createNotFoundException();
         }
+               
+        $form = $this->createForm(new PersonType(), $person);
+        $form->handleRequest($req);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            
+            $changedPerson = $form->getData();
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($changedPerson);
+            $em->flush();
+            
+            return $this->render(
+                'AddressBookBundle:Person:show_person.html.twig', 
+                ["person" => $changedPerson]
+            );
+        }
         
         return $this->render(
             'AddressBookBundle:Person:edit_name.html.twig',
-            ["person" => $person]
+            ["form" => $form->createView()]
         );
     }
     

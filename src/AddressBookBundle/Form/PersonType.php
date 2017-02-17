@@ -4,6 +4,7 @@ namespace AddressBookBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -31,10 +32,11 @@ class PersonType extends AbstractType{
             ->add('surname', TextType::class)
             ->add('description', TextareaType::class)
             ->add('save', SubmitType::class)
+            ->getPropertyPath('addressbook_person_createnewperson')
         ;
     }
     
-    public function getName(){
+    public function getBlockPrefix(){
         
         return 'person';
     }

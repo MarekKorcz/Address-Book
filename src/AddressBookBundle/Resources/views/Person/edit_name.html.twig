@@ -8,21 +8,23 @@
         <div class="col-md-12">
             <h3>About</h3>
             <table class="table">
+                {{ form_start(form) }}
                 <tr>
                     <th> Name: </th>
-                    <td> {{ person.name }} </td>
-                    <td>
-                        
-                    </td>
+                    <td> {{ form_widget(form.name) }} </td>
                 </tr>
                 <tr>
                     <th> Surname: </th>
-                    <td> {{ person.surname }} </td>
+                    <td> {{ form_widget(form.surname) }}</td>
                 </tr>
                 <tr>
                     <th> Description: </th>
-                    <td> {{ person.description }} </td>
+                    <td> {{ form_widget(form.description) }} </td>
                 </tr>
+                <tr>
+                    <td> {{ form_widget(form.save) }} </td>
+                </tr>
+                {{ form_end(form) }}
             </table>
         </div>
     </div>   
