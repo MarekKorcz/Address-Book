@@ -7,7 +7,18 @@
         <h2>Add new Person</h2>
         <div class="form">
             {{ form_start(form) }}
-            {{ form_widget(form) }}
+                <div class="form">
+                    {{ form_label(form.name) }}<br>
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="form">
+                    {{ form_label(form.surname) }}<br>
+                    {{ form_widget(form.surname) }}
+                </div>
+                <div class="form">
+                    {{ form_label(form.description) }}<br>
+                    {{ form_widget(form.description) }}
+                </div>
             {{ form_end(form) }}
         </div>
     </div>
