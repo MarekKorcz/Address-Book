@@ -35,10 +35,12 @@
             </tr>
             {% endfor %}
         </table>
+        {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('addressbook_person_createnewperson') }}"
             <button class="btn btn-success">
                 <strong>Add new</strong>
             </button>
         </a>
+        {% endif %}
     </div>
 {% endblock %}
