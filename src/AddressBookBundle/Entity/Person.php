@@ -57,6 +57,12 @@ class Person
      */
     private $emails;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="people")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $users;
+    
 
 
     /**

@@ -2,3 +2,6 @@ address_book:
     resource: "@AddressBookBundle/Controller/"
     type:     annotation
     prefix:   /
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
