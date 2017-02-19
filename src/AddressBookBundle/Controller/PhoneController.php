@@ -15,10 +15,10 @@ class PhoneController extends Controller
 {
     
     /**
-     * @Route("/newPhone")
+     * @Route("/newPhone/{personId}")
      * @Method({"GET", "POST"})
      */
-    public function createNewPhoneAction(Request $req){
+    public function createNewPhoneAction(Request $req, $personId){
         
         $phone = new Phone();
         
@@ -28,15 +28,22 @@ class PhoneController extends Controller
         
         if($form->isSubmitted() && $form->isValid()){
             
-            $phone = $form->getData();
+            $repo = $this->getDoctrine()->getRepository('AddressBookBundle:Person');
+            $person = $repo->find($personId);
             
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($phone);
-            $em->flush();
+            if($person != null){
             
-            return $this->redirectToRoute(
-                'addressbook_person_showindex'
-            );
+                $phone = $form->getData();
+                $phone->setPerson($person);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($phone);
+                $em->flush();
+
+                return $this->redirectToRoute(
+                    'addressbook_person_showindex'
+                );
+            }
         }
         
         return $this->render(
