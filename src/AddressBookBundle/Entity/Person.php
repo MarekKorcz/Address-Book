@@ -61,7 +61,7 @@ class Person
      * @ORM\ManyToOne(targetEntity="User", inversedBy="people")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $users;
+    private $user;
     
 
 
@@ -243,6 +243,18 @@ class Person
     {
         return $this->emails;
     }
+    
+    public function setUser($user){
+        
+        $this->user = $user;
+    }
+    
+    public function getUser(){
+     
+        return $this->user;
+    }
+    
+    
     /**
      * Constructor
      */

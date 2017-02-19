@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 
 use AddressBookBundle\Entity\Person;
+use AddressBookBundle\Entity\User;
 use AddressBookBundle\Form\PersonType;
 
 class PersonController extends Controller {
@@ -20,11 +21,22 @@ class PersonController extends Controller {
         
         $repo = $this->getDoctrine()->getRepository("AddressBookBundle:Person");
         
-        $persons = $repo->sortPeopleByName();
+        $user = $this->container
+            ->get('security.context')
+            ->getToken()
+            ->getUser();
+        
+        if($user instanceof User){
+        
+            $persons = $repo->sortPeopleByName($user);
+        }else{
+        
+            $persons = [];
+        }
         
         return $this->render(
-            'AddressBookBundle:Person:show_index.html.twig', 
-            ["persons" => $persons]
+                'AddressBookBundle:Person:show_index.html.twig', 
+                ["persons" => $persons]
         );
     }
     
@@ -65,13 +77,23 @@ class PersonController extends Controller {
             
             $person = $form->getData();
             
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($person);
-            $em->flush();
+            $user = $this->container
+                ->get('security.context')
+                ->getToken()
+                ->getUser();
             
-            return $this->redirectToRoute(
-                'addressbook_person_showindex'
-            );
+            if($user instanceof User){
+            
+                $person->setUser($user);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($person);
+                $em->flush();
+                         
+                return $this->redirectToRoute(
+                    'addressbook_person_showindex'
+                );
+            }
         }
         
         return $this->render(

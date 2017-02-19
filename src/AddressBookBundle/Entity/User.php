@@ -23,7 +23,7 @@ class User extends BaseUser
     protected $id;
     
     /**
-     * @ORM\OneToMany(targetEntity="Person", mappedBy="users", cascade={"All"})
+     * @ORM\OneToMany(targetEntity="Person", mappedBy="user", cascade={"All"})
      */
     private $people;
 
