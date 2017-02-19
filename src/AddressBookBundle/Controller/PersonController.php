@@ -11,41 +11,10 @@ use AddressBookBundle\Entity\Person;
 use AddressBookBundle\Form\PersonType;
 
 class PersonController extends Controller {
-
-    
-    /**
-     * @Route("/newPerson")
-     * @Method({"GET", "POST"})
-     */
-    public function createNewPersonAction(Request $req){
-        
-        $person = new Person();
-        
-        $form = $this->createForm(new PersonType(), $person);
-        
-        $form->handleRequest($req);
-        
-        if($form->isSubmitted() && $form->isValid()){
-            
-            $person = $form->getData();
-            
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($person);
-            $em->flush();
-            
-            return $this->redirectToRoute(
-                'addressbook_person_showindex'
-            );
-        }
-        
-        return $this->render(
-            'AddressBookBundle:Person:new_person.html.twig',
-            ['form' => $form->createView()]
-        );
-    }
     
     /**
      * @Route("/")
+     * @Method("GET")
      */
     public function showIndexAction() {
         
@@ -78,6 +47,37 @@ class PersonController extends Controller {
             ["person" => $person]
         );
         
+    }
+    
+    /**
+     * @Route("/newPerson")
+     * @Method({"GET", "POST"})
+     */
+    public function createNewPersonAction(Request $req){
+        
+        $person = new Person();
+        
+        $form = $this->createForm(new PersonType(), $person);
+        
+        $form->handleRequest($req);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            
+            $person = $form->getData();
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($person);
+            $em->flush();
+            
+            return $this->redirectToRoute(
+                'addressbook_person_showindex'
+            );
+        }
+        
+        return $this->render(
+            'AddressBookBundle:Person:new_person.html.twig',
+            ['form' => $form->createView()]
+        );
     }
     
     /**
@@ -116,34 +116,23 @@ class PersonController extends Controller {
         );
     }
     
-    
-    
-    
     /**
-     * @Route("/add")
+     * @Route("/deletePerson/{personId}")
+     * @Method("GET")
      */
-    
-    /*
-    public function addAction(){
+    public function deletePersonAction($personId){
         
-        $repo = $this->getDoctrine()->getRepository("AddressBookBundle:Person");
-        $em = $this->getDoctrine()->getManager();
+        $repo = $this->getDoctrine()->getRepository('AddressBookBundle:Person');
         
-        $person = $repo->find(1);
+        $person = $repo->find($personId);
+        
+        if($person != null){
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($person);
+            $em->flush();
 
-        $address = new Address();
-        $address->setCity("Dallas");
-        $address->setStreet("Dworcowa");
-        $address->setHouseNo(rand(10, 100));
-        $address->setFlatNo(rand(10, 100));
-        //$address->setPerson($person);
-        
-        $person->addAddress($address);
-        
-        $em->persist($person);
-        $em->flush();
-
-        return $this->redirectToRoute("addressbook_person_showindex");
+            return $this->redirectToRoute('addressbook_person_showindex');
+        }
     }
-    */
 }

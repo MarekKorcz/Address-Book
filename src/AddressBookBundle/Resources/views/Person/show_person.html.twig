@@ -5,6 +5,19 @@
 {% block body %}
     <div class="container">
     <h1>Welcome To Edit Name Page</h1>
+    <div>
+        <a href="{{ path('addressbook_person_showindex') }}">
+            <button class="btn btn-primary">
+                <strong>Main page</strong>
+            </button>
+        </a>
+        <a href="{{ path("addressbook_person_deleteperson", 
+            {"personId":person.id}) }}"
+            <button class="btn btn-warning" id="delete">
+                <strong>Delete</strong>
+            </button>
+        </a>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <h3>About</h3>
@@ -13,6 +26,7 @@
                     <th> Name: </th>
                     <td> 
                         <strong>{{ person.name }}</stron>
+                    </td>
                     <td>
                         <a href="{{ path("addressbook_person_editname", 
                             {"id":person.id}) }}">
@@ -20,7 +34,6 @@
                                 <strong>Edit</strong>
                             </button>
                         </a>
-                    </td>
                     </td>
                 </tr>
                 <tr>

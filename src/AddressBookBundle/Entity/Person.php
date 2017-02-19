@@ -43,17 +43,17 @@ class Person
     private $description;
     
     /**
-     * @ORM\OneToMany(targetEntity="Address", mappedBy="person", cascade={"persist"}) 
+     * @ORM\OneToMany(targetEntity="Address", mappedBy="person", cascade={"All"}) 
      */
     private $addresses;
     
      /**
-     * @ORM\OneToMany(targetEntity="Phone", mappedBy="person", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Phone", mappedBy="person", cascade={"All"})
      */
     private $phones;
     
      /**
-     * @ORM\OneToMany(targetEntity="Email", mappedBy="person", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Email", mappedBy="person", cascade={"All"})
      */
     private $emails;
     

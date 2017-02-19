@@ -11,7 +11,8 @@
                 <th> Name </th>
                 <th> Surname </th>
                 <th> Description </th>  
-                <th> Action </th>
+                <th> Show </th>
+                <th> Delete </th>
             </tr>
             {% for person in persons %}
             <tr>
@@ -29,6 +30,14 @@
                         {"id":person.id}) }}">
                         <button class="btn btn-primary"> 
                             <strong>Show</strong>
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path("addressbook_person_deleteperson", 
+                        {"personId":person.id}) }}"
+                        <button class="btn btn-warning" id="delete">
+                            <strong>Delete</strong>
                         </button>
                     </a>
                 </td>
