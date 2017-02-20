@@ -13,11 +13,11 @@ use Doctrine\ORM\EntityRepository;
 class PersonRepository extends EntityRepository
 {
     
-    public function sortPeopleByName($userId){
+    public function sortPeopleByName($id){
 
         $people = $this->getEntityManager()->createQuery(
-        'SELECT p FROM AddressBookBundle:Person p WHERE p.user = :userId ORDER BY p.name'
-        )->setParameter('userId', $userId)
+        'SELECT p FROM AddressBookBundle:Person p WHERE p.user = :id ORDER BY p.name'
+        )->setParameter('id', $id)
         ->getResult();
         
         return $people;
