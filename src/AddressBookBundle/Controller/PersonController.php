@@ -153,8 +153,8 @@ class PersonController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->remove($person);
             $em->flush();
-
-            return $this->redirectToRoute('addressbook_person_showindex');
         }
+        
+        return $this->redirectToRoute('addressbook_person_showindex');
     }
 }

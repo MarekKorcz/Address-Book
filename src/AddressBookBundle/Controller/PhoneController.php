@@ -41,7 +41,8 @@ class PhoneController extends Controller
                 $em->flush();
 
                 return $this->redirectToRoute(
-                    'addressbook_person_showindex'
+                    'addressbook_person_showperson',
+                    ['id' => $personId]
                 );
             }
         }
@@ -50,5 +51,31 @@ class PhoneController extends Controller
             'AddressBookBundle:Phone:new_phone.html.twig',
             ['form' => $form->createView()]
         );
+    }
+    
+    /**
+     * @Route("/deletePhone/{id}")
+     * @Method("GET")
+     */
+    public function deletePhoneAction($id){
+        
+        $repo = $this->getDoctrine()->getRepository('AddressBookBundle:Phone');
+        $phone = $repo->find($id);
+        
+        if($phone != null){
+
+            $personId = $phone->getPerson()->getId();
+            
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($phone);
+            $em->flush();
+            
+            return $this->redirectToRoute(
+                'addressbook_person_showperson',
+                ['id' => $personId]
+            );
+        }
+        
+        throw $this->createNotFoundException('There is no phone number with passed id!');
     }
 }

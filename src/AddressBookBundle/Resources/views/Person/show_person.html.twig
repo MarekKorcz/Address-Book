@@ -79,7 +79,16 @@
                 </tr>
                 {% for phone in person.phones %}
                     <tr>
-                        <td> {{ phone.number }} </td>
+                        <td> 
+                            {{ phone.number }} 
+                        </td>
+                        <td>
+                            <a href="{{ path('addressbook_phone_deletephone', {'id':phone.id}) }}"
+                                <button class="btn btn-sm btn-warning">
+                                    <strong>Delete</strong>
+                                </button>
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </table>
@@ -87,9 +96,9 @@
                 <p>There is no phones</p>
             {% endif %}
             <a href="{{ path('addressbook_phone_createnewphone', {'personId':person.id}) }}"
-                    <button class="btn btn-sm btn-success">
-                        <strong>Add new</strong>
-                    </button>
+                <button class="btn btn-sm btn-success">
+                    <strong>Add new</strong>
+                </button>
             </a>
         </div>
         
