@@ -75,5 +75,5 @@ fos_user:
         sender_name: "%mailer_user%"
     
 services:
-    fos_user.doctrine_registy:
+    fos_user.doctrine_registry:
         alias: doctrine
