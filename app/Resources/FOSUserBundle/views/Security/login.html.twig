@@ -4,12 +4,21 @@
 
 {% block body %}
   
-    <div class="container">    
-    <h2>Please, log in:</h2>
-
-    {% block fos_user_content %}
-        {{ include('@FOSUser/Security/login_content.html.twig') }}
-    {% endblock fos_user_content %}
+<div class="container">  
+    <h1>Welcome to AddressBook</h1>
+    <div class="row">
+        <div class="center-block">
+                <h2>Please, log in:</h2>
+                {% block fos_user_content %}
+                    {% include('@FOSUser/Security/login_content.html.twig') %}
+                {% endblock fos_user_content %}
+            </div>
+        </div>
+        <div class="center-block">
+            <a href="{{ path('fos_user_registration_register') }}">
+                <h3>Or register</h3>
+            </a>
+        </div>
     </div>
-
+    
 {% endblock %}
