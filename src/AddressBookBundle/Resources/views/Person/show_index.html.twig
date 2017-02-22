@@ -5,6 +5,13 @@
 {% block body %}
     <div class="container">
     <h1>Welcome to the Show People page</h1>
+    <div>
+    <a href="{{ path('fos_user_security_logout') }}">
+        <button class="btn btn-warning">
+            <strong>Logout</strong>
+        <button>
+    </a>
+    </div>
     <p><strong>Number of people: {{ persons | length }}</strong></p>
         <table class="table">
             <tr>
