@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Login Form{% endblock %}
+
+{% block body %}
+  
+    <div class="container">    
+    <h2>Please, log in:</h2>
+
+    {% block fos_user_content %}
+        {{ include('@FOSUser/Security/login_content.html.twig') }}
+    {% endblock fos_user_content %}
+    </div>
+
+{% endblock %}
