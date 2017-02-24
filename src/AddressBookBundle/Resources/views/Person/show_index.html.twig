@@ -56,5 +56,9 @@
                 <strong>Add new</strong>
             </button>
         </a>
-    </div>   
+    </div>
+        {% javascripts
+            'web/bundles/framework/js/script.js' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
 {% endblock %}
