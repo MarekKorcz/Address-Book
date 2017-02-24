@@ -71,38 +71,6 @@
     <div class="row">
         
         <div class="col-md-4">
-            <h3>Phones</h3>
-            {% if person.phones | length > 0 %}
-                <table class="table">
-                <tr>
-                    <th> Phones: </th>
-                </tr>
-                {% for phone in person.phones %}
-                    <tr>
-                        <td> 
-                            {{ phone.number }} 
-                        </td>
-                        <td>
-                            <a href="{{ path('addressbook_phone_deletephone', {'id':phone.id}) }}"
-                                <button class="btn btn-sm btn-warning">
-                                    <strong>Delete</strong>
-                                </button>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </table>
-            {% else %} 
-                <p>There is no phones</p>
-            {% endif %}
-            <a href="{{ path('addressbook_phone_createnewphone', {'personId':person.id}) }}"
-                <button class="btn btn-sm btn-success">
-                    <strong>Add new</strong>
-                </button>
-            </a>
-        </div>
-        
-        <div class="col-md-4">
             <h3>Addresses</h3>
             {% if person.addresses | length > 0 %}
                 <table class="table">
@@ -125,6 +93,65 @@
             {% else %} 
                 <p>There is no addresses</p>
             {% endif %}
+        </div>
+        
+        <div class="col-md-4">
+            <h3>Emails</h3>
+            {% if person.emails | length > 0 %}
+                <table class="table">
+                <tr>
+                    <th> Emails: </th>
+                </tr>
+                {% for email in person.email %}
+                    <tr>
+                        <td>
+                            {{ email.address }}
+                        </td>
+                        <td>
+                            <a href="{{ path('addressbook_email_deleteemail'), {'id':email.id} }}">
+                                <button class="btn btn-sm btn-warning">
+                                    <strong>Delete</strong>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% else %}
+                <p>There is no email adresses</p>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-4">
+            <h3>Phones</h3>
+            {% if person.phones | length > 0 %}
+                <table class="table">
+                <tr>
+                    <th> Phones: </th>
+                </tr>
+                {% for phone in person.phones %}
+                    <tr>
+                        <td> 
+                            {{ phone.number }} 
+                        </td>
+                        <td>
+                            <a href="{{ path('addressbook_phone_deletephone', {'id':phone.id}) }}">
+                                <button class="btn btn-sm btn-warning">
+                                    <strong>Delete</strong>
+                                </button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% else %} 
+                <p>There is no phones</p>
+            {% endif %}
+            <a href="{{ path('addressbook_phone_createnewphone', {'personId':person.id}) }}">
+                <button class="btn btn-sm btn-success">
+                    <strong>Add new</strong>
+                </button>
+            </a>
         </div>
 
     </div>
