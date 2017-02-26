@@ -108,7 +108,7 @@
                             {{ email.address }}
                         </td>
                         <td>
-                            <a href="{{ path('addressbook_email_deleteemail'), {'id':email.id} }}">
+                            <a href="{{ path('addressbook_email_deleteemail', {'id':email.id}) }}">
                                 <button class="btn btn-sm btn-warning">
                                     <strong>Delete</strong>
                                 </button>
@@ -120,6 +120,11 @@
             {% else %}
                 <p>There is no email adresses</p>
             {% endif %}
+            <a href="{{ path('addressbook_email_createnewemail', {'personId':person.id}) }}">
+                <button class="btn btn-sm btn-success">
+                    <strong>Add new</strong>
+                </button>
+            </a>
         </div>
         
         <div class="col-md-4">

@@ -57,8 +57,7 @@
             </button>
         </a>
     </div>
-        {% javascripts
-            'web/bundles/framework/js/script.js' %}
-            <script src="{{ asset_url }}"></script>
-        {% endjavascripts %}
+    {% block javascripts %}
+        <script src="{{ asset('js/app.js') }}"></script>
+    {% endblock %}
 {% endblock %}
