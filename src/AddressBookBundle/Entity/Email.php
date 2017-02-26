@@ -73,6 +73,11 @@ class Email
     {
         return $this->address;
     }
+    
+    public function getEmail(){
+        
+        return $this->getAddress();
+    }
 
     /**
      * Set type
