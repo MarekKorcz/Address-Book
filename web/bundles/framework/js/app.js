@@ -1,3 +1,7 @@
-$('h1').hide();
+$(document).ready(function(){
 
-console.log("it works!");
+    $('h1').hide();
+
+    console.log("it works!");
+
+});

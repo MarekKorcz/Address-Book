@@ -57,7 +57,8 @@
             </button>
         </a>
     </div>
-    {% block javascripts %}
-        <script src="{{ asset('js/app.js') }}"></script>
-    {% endblock %}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('web/bundles/framework/js/app.js') }}"></script>
 {% endblock %}
