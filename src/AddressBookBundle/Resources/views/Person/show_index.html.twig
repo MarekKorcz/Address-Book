@@ -9,7 +9,7 @@
     <a href="{{ path('fos_user_security_logout') }}">
         <button class="btn btn-warning">
             <strong>Logout</strong>
-        <button>
+        </button>
     </a>
     </div>
     <p><strong>Number of people: {{ persons | length }}</strong></p>
@@ -60,5 +60,5 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('bundles/framework/js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}
