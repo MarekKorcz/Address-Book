@@ -1,7 +1,7 @@
 $(document).ready(function(){
     
     $('.confirm-delete').click(function(){
-        if(confirm("Do you want to delete this person?")){
+        if(confirm("Really? Do you want to delete this?")){
             return true;
         }
         return false;

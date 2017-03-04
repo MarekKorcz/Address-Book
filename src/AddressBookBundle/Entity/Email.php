@@ -28,13 +28,6 @@ class Email
      */
     private $address;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="type", type="smallint")
-     */
-    private $type;
-
      /**
      * @ORM\ManyToOne(targetEntity="Person", inversedBy="emails")
      * @ORM\JoinColumn(name="person_id", referencedColumnName="id")
@@ -79,28 +72,6 @@ class Email
         return $this->getAddress();
     }
 
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Email
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return integer 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
 
     /**
      * Set person
