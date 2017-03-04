@@ -5,16 +5,18 @@
 {% block body %}
   
 <div class="container">  
-    <h1>Welcome to AddressBook</h1>
+    <h1>Welcome to AddressBook Login Page</h1>
     <div class="row">
         <div class="col-xs-6">
             <h2>Please, log in:</h2>
             {% block fos_user_content %}
                 {% include('@FOSUser/Security/login_content.html.twig') %}
             {% endblock fos_user_content %}
-            <a href="{{ path('fos_user_registration_register') }}">
-                <h3>Or register</h3>
-            </a>
+            <h3>
+                <a href="{{ path('fos_user_registration_register') }}">
+                    Or register
+                </a>
+            </h3>
         </div>
         <div class="col-xs-6">
             {% block image %}  

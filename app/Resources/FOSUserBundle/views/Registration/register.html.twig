@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Registration Form{% endblock %}
+
+{% block body %}
+  
+<div class="container">  
+    <h1>Welcome to AddressBook Registration Page</h1>
+    <div class="row">
+        <h2>Please, register:</h2>
+        {% block fos_user_content %}
+            {% include "@FOSUser/Registration/register_content.html.twig" %}
+        {% endblock fos_user_content %}
+        <h3>
+            <a href="{{ path('fos_user_security_login') }}">
+                Or login
+            </a>
+        </h3>
+    </div>
+</div>
+{% endblock %}
