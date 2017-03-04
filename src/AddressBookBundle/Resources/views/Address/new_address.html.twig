@@ -1,10 +1,10 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Create Email{% endblock %}
+{% block title %}Create Address{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h2>Add new Email</h2>
+        <h2>Add new Address</h2>
         <div>
             <button class="btn btn-primary" id="go-back">
                 <strong>Back to Person's page</strong>
@@ -12,8 +12,20 @@
         </div><br>
         {{ form_start(form) }}
             <div class="form">
-                {{ form_label(form.address, 'Email:') }}<br>
-                {{ form_widget(form.address) }}
+                {{ form_label(form.city, 'City:') }}<br>
+                {{ form_widget(form.city) }}
+            </div>
+            <div class="form">
+                {{ form_label(form.street, 'Street:') }}<br>
+                {{ form_widget(form.street) }}
+            </div>
+            <div class="form">
+                {{ form_label(form.house_no, 'House_no:') }}<br>
+                {{ form_widget(form.house_no) }}
+            </div>
+            <div class="form">
+                {{ form_label(form.flat_no, 'Flat_no:') }}<br>
+                {{ form_widget(form.flat_no) }}
             </div>
         {{ form_end(form) }}     
     </div>

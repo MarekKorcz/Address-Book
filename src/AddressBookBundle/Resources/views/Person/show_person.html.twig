@@ -84,8 +84,15 @@
                             {{ address.city }}
                         </td>
                         <td> 
-                            {{ address.street }},
-                            {{ address.houseNo }}, {{ address.flatNo }}
+                            {{ address.street }}
+                            {{ address.houseNo }}/{{ address.flatNo }}
+                        </td>
+                        <td>
+                            <a href="{{ path('addressbook_address_deleteaddress', {'id':address.id}) }}">
+                                <button class="btn btn-sm btn-warning confirm-delete">
+                                    <strong>Delete</strong>
+                                </button>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -93,6 +100,11 @@
             {% else %} 
                 <p>There is no addresses</p>
             {% endif %}
+            <a href="{{ path('addressbook_address_createnewaddress', {'personId':person.id}) }}">
+                <button class="btn btn-sm btn-success">
+                    <strong>Add new</strong>
+                </button>
+            </a>
         </div>
         
         <div class="col-md-4">
