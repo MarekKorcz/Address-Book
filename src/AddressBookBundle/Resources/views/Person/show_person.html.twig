@@ -13,7 +13,7 @@
         </a>
         <a href="{{ path("addressbook_person_deleteperson", 
             {"personId":person.id}) }}"
-            <button class="btn btn-warning" id="delete">
+            <button class="btn btn-warning confirm-delete">
                 <strong>Delete</strong>
             </button>
         </a>
@@ -109,7 +109,7 @@
                         </td>
                         <td>
                             <a href="{{ path('addressbook_email_deleteemail', {'id':email.id}) }}">
-                                <button class="btn btn-sm btn-warning">
+                                <button class="btn btn-sm btn-warning confirm-delete">
                                     <strong>Delete</strong>
                                 </button>
                             </a>
@@ -141,7 +141,7 @@
                         </td>
                         <td>
                             <a href="{{ path('addressbook_phone_deletephone', {'id':phone.id}) }}">
-                                <button class="btn btn-sm btn-warning">
+                                <button class="btn btn-sm btn-warning confirm-delete">
                                     <strong>Delete</strong>
                                 </button>
                             </a>

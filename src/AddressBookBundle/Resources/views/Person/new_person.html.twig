@@ -5,6 +5,13 @@
 {% block body %}
     <div class="container">
         <h2>Add new Person</h2>
+        <div>
+            <a href="{{ path('addressbook_person_showindex') }}">
+            <button class="btn btn-primary">
+                <strong>Back to Main page</strong>
+            </button>
+        </a>
+        </div><br>
         <div class="form">
             {{ form_start(form) }}
                 <div class="form">

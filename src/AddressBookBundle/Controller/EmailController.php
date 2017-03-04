@@ -27,7 +27,7 @@ class EmailController extends Controller
         
         if($form->isSubmitted() && $form->isValid()){
             
-            $repo = $this->getDoctrine()->getRepository('AddressBookBundle:Email');
+            $repo = $this->getDoctrine()->getRepository('AddressBookBundle:Person');
             $person = $repo->find($personId);
             
             if($person != null){

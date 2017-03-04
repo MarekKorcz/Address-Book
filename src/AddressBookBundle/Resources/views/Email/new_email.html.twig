@@ -5,10 +5,20 @@
 {% block body %}
     <div class="container">
         <h2>Add new Email</h2>
-        <div class="form">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
-        </div>
+        <div>
+            <button class="btn btn-primary" id="go-back">
+                <strong>Back to Person's page</strong>
+            </button>
+        </div><br>
+        {{ form_start(form) }}
+            <div class="form">
+                {{ form_label(form.address, 'Email:') }}<br>
+                {{ form_widget(form.address) }}
+            </div>
+        {{ form_end(form) }}     
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}

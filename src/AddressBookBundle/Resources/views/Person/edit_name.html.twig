@@ -5,28 +5,30 @@
 {% block body %}
     <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h3>About</h3>
-            <table class="table">
-                {{ form_start(form) }}
-                <tr>
-                    <th> Name: </th>
-                    <td> {{ form_widget(form.name) }} </td>
-                </tr>
-                <tr>
-                    <th> Surname: </th>
-                    <td> {{ form_widget(form.surname) }}</td>
-                </tr>
-                <tr>
-                    <th> Description: </th>
-                    <td> {{ form_widget(form.description) }} </td>
-                </tr>
-                <tr>
-                    <td> {{ form_widget(form.save) }} </td>
-                </tr>
-                {{ form_end(form) }}
-            </table>
-        </div>
+        <h2>About Person</h2>
+        <div>
+            <button class="btn btn-primary" id="go-back">
+                <strong>Back to Person's page</strong>
+            </button>
+        </div><br>
+        {{ form_start(form) }}
+            <div class="form">
+                {{ form_label(form.name, 'Name:') }}<br>
+                {{ form_widget(form.name) }} 
+            </div>
+            <div class="form">
+                {{ form_label(form.surname, 'Surname:') }}<br>
+                {{ form_widget(form.surname) }}
+            </div>
+            <div class="form">
+                {{ form_label(form.description, 'Description:') }}<br>
+                {{ form_widget(form.description) }} 
+            </div>
+        {{ form_end(form) }}
     </div>   
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/app.js') }}"></script>
 {% endblock %}
